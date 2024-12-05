@@ -31,14 +31,27 @@
 <h1>Welcome to After School App</h1>
 <h1>Vue App Will be Here Here</h1>
 
-<div id="app">
-    <p>{{ message }}</p>
-</div>
-<button @click="showAlert">Click Me</button>
-<button @click="increment">Increment: {{ count }}</button>
-<footer>
-    <p>© 2024 After School App</p>
-</footer>
+<!-- Vue App -->
+<div id="app" class="container my-5">
+    <header>
+        <h2 v-text="sitename"></h2>
+        <button v-show="currentPage === 'browse'" v-on:click="currentPage = 'checkout'">
+            🛒 Checkout {{ cartCount }}
+        </button>
+        <button v-show="currentPage === 'checkout'" v-on:click="currentPage = 'browse'">🌐 Browse</button>
+        <hr>
+    </header>
+    
+    <div v-show="currentPage === 'browse'">
+        <h2 class="text-center mb-4">Available Lessons</h2>
+    
+        <!-- Search and Sorting Controls -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <!-- Search Input -->
+            <div>
+                <label for="search" class="form-label"><strong>Search:</strong></label>
+                <input id="search" v-model="searchQuery" type="text" class="form-control" placeholder="Search lessons...">
+            </div>
 
 
 </body>
