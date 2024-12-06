@@ -15,7 +15,7 @@ const app = new Vue({
     },
     created() {
         // Fetch lessons from the backend
-        fetch('http://localhost:3000/lessons')
+        fetch('https://after-school-backend-806q.onrender.com/lessons')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -69,7 +69,7 @@ const app = new Vue({
             console.log('Submitting order:', orderData); // Debugging order data
         
             // Submit the order to the backend
-            fetch('http://localhost:3000/orders', {
+            fetch('https://after-school-backend-806q.onrender.com/orders', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(orderData), // Convert orderData to JSON
@@ -84,7 +84,7 @@ const app = new Vue({
                     console.log('Order submitted successfully:', data);
         
                     this.cart.forEach(item => {
-                        fetch(`http://localhost:3000/lessons/${item.id}`, {
+                        fetch(`https://after-school-backend-806q.onrender.com/lessons/${item.id}`, {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ spaces: item.spaces }), // Only include `spaces`
